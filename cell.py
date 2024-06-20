@@ -15,7 +15,7 @@ class CellClass:
             self.rule = ('0'*s) + self.rule
 
     # Generate the initial state (row)
-    def generate_cells(self):
+    # def generate_cells(self):
         
         
 
