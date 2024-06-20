@@ -19,13 +19,14 @@ def test_rule_length(rule):
                                   {'one': 1, 'two': 2},
                                   -3])
 def test_rule_is_not_int_or_str(rule):
-    if type(rule) == str:
+    c = CellClass(rule, (40, 40))
+    if type(c.rule) == str:
         with pytest.raises(ValueError):
-            assert int(rule)
-    elif type(rule) == int:
-        assert rule < 0
+            assert int(c.rule)
+    elif type(c.rule) == int:
+        assert c.rule < 0
     else:
-        assert type(rule) != int
+        assert type(c.rule) != int
 
 @pytest.mark.parametrize('rule', ['32',
                                   '200',
@@ -33,7 +34,8 @@ def test_rule_is_not_int_or_str(rule):
                                   '1',
                                   1000])
 def test_rule_is__n_str_or_int(rule):
-    if type(rule) == str:
-        assert int(rule)
-    elif type(rule) == int:
-        assert rule > 0
+    c = CellClass(rule, (40, 40))
+    if type(c.rule) == str:
+        assert int(c.rule)
+    elif type(c.rule) == int:
+        assert c.rule > 0
