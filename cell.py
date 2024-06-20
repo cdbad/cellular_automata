@@ -6,6 +6,3 @@ class CellClass:
         if len(self.rule) < 8:
             s = 8 - len(self.rule)
             self.rule = ('0'*s) + self.rule
-
-
-x = CellClass('22')
