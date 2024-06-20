@@ -30,7 +30,7 @@ def test_rule_is_not_int_or_str(rule):
 @pytest.mark.parametrize('rule', ['32',
                                   '200',
                                   34,
-                                  '0',
+                                  '1',
                                   1000])
 def test_rule_is__n_str_or_int(rule):
     if type(rule) == str:
