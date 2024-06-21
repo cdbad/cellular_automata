@@ -3,6 +3,7 @@ Cellular Automata
 '''
 
 import random
+import numpy as np
 
 
 class CellClass:
@@ -29,7 +30,6 @@ class CellClass:
             next_row = []
             
             for i in range(self.x):
-                print(i)
                 left = init_state[i - 1]
                 current = init_state[i]
 
@@ -57,4 +57,5 @@ class CellClass:
 
             self.matrix.append(next_row)
             init_state = self.matrix[-1]
+        self.matrix = np.array(self.matrix)
         return self.matrix
