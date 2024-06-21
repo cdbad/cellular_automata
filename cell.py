@@ -43,24 +43,26 @@ class CellClass:
                 else:
                     right = init_state[state + 1]
 
-                    if left == 1 and current == 1 and right == 1:
-                        next_row.append(self.rule[0])  # 0
-                    elif left == 1 and current == 1 and right == 0:
-                        next_row.append(self.rule[1])  # 0
-                    elif left == 1 and current == 0 and right == 1:
-                        next_row.append(self.rule[2])  # 0
-                    elif left == 1 and current == 0 and right == 0:
-                        next_row.append(self.rule[3])  # 1
-                    elif left == 0 and current == 1 and right == 1:
-                        next_row.append(self.rule[4])  # 0
-                    elif left == 0 and current == 1 and right == 0:
-                        next_row.append(self.rule[5])  # 1
-                    elif left == 0 and current == 0 and right == 1:
-                        next_row.append(self.rule[6])  # 1
-                    elif left == 0 and current == 0 and right == 0:
-                        next_row.append(self.rule[7])  # 0
+                if left == 1 and current == 1 and right == 1:
+                    next_row.append(self.rule[0])  # 0
+                elif left == 1 and current == 1 and right == 0:
+                    next_row.append(self.rule[1])  # 0
+                elif left == 1 and current == 0 and right == 1:
+                    next_row.append(self.rule[2])  # 0
+                elif left == 1 and current == 0 and right == 0:
+                    next_row.append(self.rule[3])  # 1
+                elif left == 0 and current == 1 and right == 1:
+                    next_row.append(self.rule[4])  # 0
+                elif left == 0 and current == 1 and right == 0:
+                    next_row.append(self.rule[5])  # 1
+                elif left == 0 and current == 0 and right == 1:
+                    next_row.append(self.rule[6])  # 1
+                elif left == 0 and current == 0 and right == 0:
+                    next_row.append(self.rule[7])  # 0
         
                 matrix.append(next_row)
+                # print(next_row)
+                
         init_state = next_row
         return matrix
 
