@@ -29,7 +29,6 @@ class CellClass:
             next_row = []
             
             for i in range(self.x):
-                print(i)
                 left = init_state[i - 1]
                 current = init_state[i]
 
@@ -58,3 +57,4 @@ class CellClass:
             self.matrix.append(next_row)
             init_state = self.matrix[-1]
         return self.matrix
+
