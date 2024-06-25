@@ -4,18 +4,19 @@ from cell import CellClass
 
 class Grid:
 
+    
     def __init__(self, rule, rows, cols) -> None:
         # Windown Display
         self.wn = turtle.Screen()
-        self.wn.bgcolor("light green")
+        self.wn.bgcolor("#F2E86D")
         self.wn.title("Cellular Automata")
         self.wn.setup(1000, 1000)  # window size
 
         # Create a turtle named "drawer"
         self.drawer = turtle.Turtle()
-        self.drawer.speed(400)
         self.drawer.hideturtle()
-        
+        self.wn.tracer(40, 40)
+
         self.rule = rule
         self.rows = rows
         self.cols = cols
@@ -23,11 +24,9 @@ class Grid:
         self.matrix = celular_automata.generate_cells()
         self.create_grid()
 
-        #self.wn.tracer(40)
-        #self.wn.update()
+        self.wn.update()
 
         # Hide the turtle and keep the window open until it is clicked
-        self.drawer.hideturtle()
         self.wn.exitonclick()
 
 
@@ -47,17 +46,19 @@ class Grid:
 
     # Function to create a grid of filled squares
     def create_grid(self):
-        square_size = 20
+        square_size = 20 # size of the cells
         start_x = -self.cols * square_size // 2
         start_y = self.rows * square_size // 2
-        for row in range(self.rows):
-            row_in_matrix = self.matrix[row]
-            for col in range(self.cols):
+        for col in range(self.cols):
+            for row in range(self.rows):
                 x = start_x + col * square_size
                 y = start_y - row * square_size
-                if row_in_matrix[col] == 1:
-                    row_in_matrix[col] = 'purple'
+                if self.matrix[col][row] == 1:
+                    color = '#422040'
                 else:
-                    row_in_matrix[col] = 'white'
-                color = row_in_matrix[col]
+                    color = '#E9F1F7'
+
                 self.draw_filled_square(x, y, square_size * 0.8, color)
+
+        
+#window = Grid(124, 21, 42) 
