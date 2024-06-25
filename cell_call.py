@@ -1,6 +1,6 @@
 from cell import CellClass
 
-celular_atutomata = CellClass(42, (6,10))
+celular_automata = CellClass(123, (15,15))
 
-print(f'binary rule: {celular_atutomata.rule} \nsize: {celular_atutomata.x} x {celular_atutomata.y}')
-print(celular_atutomata.generate_cells())
+print(f'binary rule: {celular_automata.rule} \nsize: {celular_automata.x} x {celular_automata.y}')
+matrix = celular_automata.generate_cells()

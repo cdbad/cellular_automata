@@ -57,6 +57,6 @@ class CellClass:
 
             self.matrix.append(next_row)
             init_state = self.matrix[-1]
-        self.matrix = np.array(self.matrix)
+        #self.matrix = np.array(self.matrix)
         return self.matrix
 
