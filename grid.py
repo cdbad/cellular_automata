@@ -1,75 +1,57 @@
 import turtle
 from cell import CellClass
+import tkinter as tk
 
+def create_grid(rows, cols, matrix, drawer):
+    square_size = 20 # size of the cells
+    start_x = -rows * square_size // 2
+    start_y = cols * square_size // 2
+    for col in range(cols):
+        for row in range(rows):
+            x = start_x + row * square_size
+            y = start_y - col * square_size
+            if matrix[col][row] == 1:
+                color = '#422040'
+            else:
+                color = '#E9F1F7'
 
-class Grid:
+            draw_filled_square(x, y, square_size * 0.8, color, drawer)
 
-    
-    def __init__(self, rule, rows, cols) -> None:
-        # try:
-        # Windown Display
-        self.rule = rule
-        self.rows = rows
-        self.cols = cols
+def draw_filled_square(x, y, size, color, drawer):
+    drawer.penup()
+    drawer.goto(x, y)
+    drawer.pendown()
+    drawer.color(color) 
+    drawer.begin_fill()
+    for i in range(4):
+        drawer.forward(size)
+        drawer.right(90)
+    drawer.end_fill()
 
-        cellular_automata = CellClass(self.rule, (self.rows, self.cols))
-        self.matrix = cellular_automata.generate_cells()
+def grid(rule, w, h):
+    cellular_automata = CellClass(rule, (w, h))
+    matrix = cellular_automata.generate_cells()
 
-    def make_screen(self):
-        self.wn = turtle.Screen()
-        self.wn.bgcolor("#F2E86D")
-        self.wn.title("Cellular Automata")
-        self.wn.setup(1000, 1000)  # window size
+    # ROOT
+    root = tk.Tk()
+    root.title('Turtle Automata')
 
-        # Create a turtle named "drawer"
-        self.drawer = turtle.Turtle()
-        self.drawer.hideturtle()
-        self.wn.tracer(40, 40)
+    canvas = tk.Canvas(
+        root,
+        width=800,
+        height=600
+        )
+    canvas.pack()
 
-        self.rule = rule
-        self.rows = rows
-        self.cols = cols
-        celular_automata = CellClass(self.rule, (self.rows, self.cols))
-        self.matrix = celular_automata.generate_cells()
-        self.create_grid()
+    wn = turtle.TurtleScreen(canvas)
 
-        self.wn.update()
+    drawer = turtle.RawTurtle(wn)
 
-        # Hide the turtle and keep the window open until it is clicked
-        self.wn.exitonclick()
-        # turtle.TurtleScreen._RUNNING = True
-        # except turtle.Terminator:
-        #     pass
+    wn.tracer(40, 40)
 
-# Function to draw a filled square at a specific position
-# It will allow us to draw in the middel of the panel
+    create_grid(cellular_automata.x, cellular_automata.y,
+                matrix, drawer)
 
-    def draw_filled_square(self, x, y, size, color):
-        self.drawer.penup()
-        self.drawer.goto(x, y)
-        self.drawer.pendown()
-        self.drawer.color(color) 
-        self.drawer.begin_fill()
-        for i in range(4):
-            self.drawer.forward(size)
-            self.drawer.right(90)
-        self.drawer.end_fill()
+    wn.update()
 
-    # Function to create a grid of filled squares
-    def create_grid(self):
-        square_size = 20 # size of the cells
-        start_x = -self.cols * square_size // 2
-        start_y = self.rows * square_size // 2
-        for col in range(self.cols):
-            for row in range(self.rows):
-                x = start_x + col * square_size
-                y = start_y - row * square_size
-                if self.matrix[col][row] == 1:
-                    color = '#422040'
-                else:
-                    color = '#E9F1F7'
-
-                self.draw_filled_square(x, y, square_size * 0.8, color)
-
-        
-#window = Grid(124, 21, 42) 
+    root.mainloop()

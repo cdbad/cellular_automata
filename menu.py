@@ -1,5 +1,5 @@
 import tkinter as tk
-from grid import Grid
+from grid import grid
 import turtle
 
 class Home:
@@ -76,8 +76,6 @@ class Home:
         width = self.w_entry.get()
         height = self.h_entry.get()
 
-        
-
         if not rule or not width or not height:
             self.__error_label('All the fields must be filled')
         elif type(rule) == str and type(width) == str and type(height) == str:
@@ -86,12 +84,7 @@ class Home:
                 width = int(width)
                 height = int(height)
                 print(rule, width, height)
-                self.visual = Grid(rule, width, height)
-                self.visual.make_screen()
+                grid(rule, width, height)
             except ValueError:
                 self.__error_label('All entries must be numbers')
-            except turtle.Terminator:
-                del self.visual
-
-    # def delete_window(self):
-    #     del self.visual
+            
