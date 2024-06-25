@@ -1,5 +1,5 @@
 import tkinter as tk
-# from grid import Grid
+from grid import Grid
 
 class Home:
     
@@ -83,6 +83,6 @@ class Home:
                 rule = int(rule)
                 width = int(width)
                 height = int(height)
-                # Grid(rule, width, height)
+                Grid(rule, width, height)
             except ValueError:
                 self.__error_label('All entries must be numbers')
