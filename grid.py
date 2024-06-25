@@ -3,11 +3,19 @@ from cell import CellClass
 
 
 class Grid:
-
     def __init__(self, rule, rows, cols) -> None:
+        # try:
         # Windown Display
+        self.rule = rule
+        self.rows = rows
+        self.cols = cols
+
+        cellular_automata = CellClass(self.rule, (self.rows, self.cols))
+        self.matrix = cellular_automata.generate_cells()
+
+    def make_screen(self):
         self.wn = turtle.Screen()
-        self.wn.bgcolor("light green")
+        self.wn.bgcolor("#F2E86D")
         self.wn.title("Cellular Automata")
         self.wn.setup(1000, 1000)  # window size
 
@@ -16,11 +24,6 @@ class Grid:
         self.drawer.speed(400)
         self.drawer.hideturtle()
         
-        self.rule = rule
-        self.rows = rows
-        self.cols = cols
-        celular_automata = CellClass(self.rule, (self.rows, self.cols))
-        self.matrix = celular_automata.generate_cells()
         self.create_grid()
 
         #self.wn.tracer(40)
@@ -28,8 +31,11 @@ class Grid:
 
         # Hide the turtle and keep the window open until it is clicked
         self.drawer.hideturtle()
+        
         self.wn.exitonclick()
-
+        # turtle.TurtleScreen._RUNNING = True
+        # except turtle.Terminator:
+        #     pass
 
 # Function to draw a filled square at a specific position
 # It will allow us to draw in the middel of the panel
@@ -56,8 +62,8 @@ class Grid:
                 x = start_x + col * square_size
                 y = start_y - row * square_size
                 if row_in_matrix[col] == 1:
-                    row_in_matrix[col] = 'purple'
+                    row_in_matrix[col] = '#422040'
                 else:
-                    row_in_matrix[col] = 'white'
+                    row_in_matrix[col] = '#E9F1F7'
                 color = row_in_matrix[col]
                 self.draw_filled_square(x, y, square_size * 0.8, color)
