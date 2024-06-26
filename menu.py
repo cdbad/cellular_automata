@@ -1,7 +1,7 @@
 import tkinter as tk
-from grid import grid
+from grid import Grid
 # import turtle
-from abc import abstractmethod
+# from abc import abstractmethod
 
 class Home:
     FONT_SIZE = 15
@@ -110,4 +110,4 @@ class Home:
             elif width < 2 or height < 2:
                 self.__label(txt="Size must be 2x2 or bigger", l_type='error')
             else:
-                grid(rule, width, height)
+                Grid(rule, width, height)
