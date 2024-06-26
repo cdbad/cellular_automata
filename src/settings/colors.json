@@ -1,0 +1,12 @@
+{
+    "Default": {
+        "Background": "422040",
+        "Ones": "#F58A07",
+        "Zeros": "#E9F1F7"
+    },
+    "Black White": {
+        "Background": "#ffffff",
+        "Ones": "#ffffff",
+        "Zeros": "#000000"
+    }
+}

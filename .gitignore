@@ -2,3 +2,4 @@
 /__pycache__/
 /.pytest_cache
 /try.py
+/src/__pycache__/

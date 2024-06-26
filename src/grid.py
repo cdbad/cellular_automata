@@ -1,14 +1,20 @@
 import turtle
-from cell import CellClass
+from src.cell import CellClass
 import tkinter as tk
+# import json
+
+# import settings.colors
 
 class Grid:
-
-    def __init__(self, rule, w, h):
+    def __init__(self, rule, w, h, color='Default'):
         self.rule = rule
         self.w = w
         self.h = h
         self.square_size = 20 # size of the cells
+
+        # with open('./src/settings/colors.json', 'r') as f:
+        #     self.colors = json.decoder(f.read())
+        #     print(self.colors)
 
         cellular_automata = CellClass(self.rule, (self.w, self.h))
         self.matrix = cellular_automata.generate_cells()
@@ -16,21 +22,18 @@ class Grid:
         # ROOT
         root = tk.Tk()
         root.title('Turtle Automata')
-        root.config(bg='black')
-        #root.geometry(f'{self.square_size * self.w + 30}x{self.square_size * self.h + 30}')
+        root.config(bg='#422040')
 
         canvas = tk.Canvas(
             root,
             width= (self.square_size * self.w + 20),
-            height= (self.square_size * self.h + 20),
-            bg='black'
+            height= (self.square_size * self.h + 20)
             )
         canvas.pack(padx=20, pady=20)
-        
-        #label = tk.Label(root, text=f'WORLD{self.rule}'", font=('Arial', 20), bg='lightblue')
-        #canvas.create_window(200, 150, window=label)
 
         wn = turtle.TurtleScreen(canvas)
+        wn.bgcolor('#422040')
+        
 
         self.drawer = turtle.RawTurtle(wn)
         self.drawer.hideturtle()
@@ -52,7 +55,7 @@ class Grid:
                 x = start_x + row * self.square_size
                 y = start_y - col * self.square_size
                 if matrix[col][row] == 1:
-                    color = '#422040'
+                    color = '#F58A07'
                 else:
                     color = '#E9F1F7'
 

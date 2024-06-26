@@ -24,8 +24,6 @@ class CellClass:
         self.matrix = [init_state]
 
         for j in range(self.y - 1):
-        
-            # matrix = [[str(number) for number in init_state]]
             next_row = []
             
             for i in range(self.x):

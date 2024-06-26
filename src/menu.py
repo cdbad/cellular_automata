@@ -1,7 +1,5 @@
 import tkinter as tk
-from grid import Grid
-# import turtle
-# from abc import abstractmethod
+from src.grid import Grid
 
 class Home:
     FONT_SIZE = 15
@@ -37,7 +35,7 @@ class Home:
         self.w_entry : tk.Entry = self.__entry(self.size_entry_frame)
         self.w_entry.grid(row=0, column=0)
 
-        self.size_label = tk.Label(self.size_entry_frame, text='x', font=('Arial', 12))
+        self.size_label : tk.Label = self.__label(self.size_entry_frame, txt='x')
         self.size_label.grid(row=0, column=1, padx=5)
 
         self.h_entry : tk.Entry = self.__entry(self.size_entry_frame)
