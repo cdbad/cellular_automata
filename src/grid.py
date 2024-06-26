@@ -1,20 +1,17 @@
 import turtle
 from src.cell import CellClass
 import tkinter as tk
-# import json
-
-# import settings.colors
+import json
 
 class Grid:
-    def __init__(self, rule, w, h, color='Default'):
+    def __init__(self, rule, w, h, color='Black White'):
         self.rule = rule
         self.w = w
         self.h = h
         self.square_size = 20 # size of the cells
 
-        # with open('./src/settings/colors.json', 'r') as f:
-        #     self.colors = json.decoder(f.read())
-        #     print(self.colors)
+        with open('./src/settings/colors.json', 'r') as f:
+            self.colors = json.load(f)[color]
 
         cellular_automata = CellClass(self.rule, (self.w, self.h))
         self.matrix = cellular_automata.generate_cells()
@@ -22,7 +19,7 @@ class Grid:
         # ROOT
         root = tk.Tk()
         root.title('Turtle Automata')
-        root.config(bg='#422040')
+        root.config(bg=self.colors['Background'])
 
         canvas = tk.Canvas(
             root,
@@ -32,7 +29,7 @@ class Grid:
         canvas.pack(padx=20, pady=20)
 
         wn = turtle.TurtleScreen(canvas)
-        wn.bgcolor('#422040')
+        wn.bgcolor(self.colors['Background'])
         
 
         self.drawer = turtle.RawTurtle(wn)
@@ -55,9 +52,9 @@ class Grid:
                 x = start_x + row * self.square_size
                 y = start_y - col * self.square_size
                 if matrix[col][row] == 1:
-                    color = '#F58A07'
+                    color = self.colors['Ones']
                 else:
-                    color = '#E9F1F7'
+                    color = self.colors['Zeros']
 
                 self.draw_filled_square(x, y, self.square_size * 0.8, color)
 
