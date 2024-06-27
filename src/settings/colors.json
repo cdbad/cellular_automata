@@ -8,5 +8,30 @@
         "Background": "#000000",
         "Ones": "#4A4A4A",
         "Zeros": "#ffffff"
+    },
+    "Pastel": {
+        "Background": "#8e9aaf",
+        "Ones": "#1B4965",
+        "Zeros": "#FEEAFA"
+    },
+    "Green": {
+        "Background": "#87A878",
+        "Ones": "#B0BC98",
+        "Zeros": "#DBF9B8"
+    },
+    "Purple": {
+        "Background": "#5D4E60",
+        "Ones": "#A88FAC",
+        "Zeros": "#EFCEFA"
+    },
+    "Desert": {
+        "Background": "#D7EBBA",
+        "Ones": "#472836",
+        "Zeros": "#FEFFBE"
+    },
+    "Ppt": {
+        "Background": "#EF6461",
+        "Ones": "#156082",
+        "Zeros": "#E8E9EB"
     }
 }
